@@ -1,0 +1,24 @@
+{
+  "name": "gzbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AwakenTheJaken/discord-gzbot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AwakenTheJaken/discord-gzbot/issues"
+  },
+  "homepage": "https://github.com/AwakenTheJaken/discord-gzbot#readme"
+}
