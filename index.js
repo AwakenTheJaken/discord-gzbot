@@ -50,7 +50,7 @@ client.on("message", function (message) {
     if(message.mentions.members.first()){
       var targetUser =  message.mentions.members.first().user
     }else{
-      var targetUser = message.channel.members.cache.filter(member => member.presence.status == 'online').random()
+      var targetUser = message.channel.guild.members.cache.random()
 
     }
     client.channels.cache.get(message.channel.id).send(`Passes ${targetUser} a ${randomCrayonColor} colored crayon.`);
