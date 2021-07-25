@@ -60,5 +60,3 @@ client.on("message", function (message) {
   
 });
 client.login(process.env.TOKEN)
-
-cb31524921047b3467bba4a26ab77c85
