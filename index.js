@@ -49,7 +49,7 @@ client.on("message", function (message) {
     const randomCrayonColor = crayonColors[Math.floor(Math.random() * crayonColors.length)]
     const crayons = ['a single', 'a handful of', 'one', 'a box of']
     var randomCrayon = crayons[Math.floor(Math.random() * crayons.length)]
-    const crayonTypes = [' rocket-shaped',' long',' short', ' jumbo sized',' borrowed',' unwrapped',' warm',' freshly sharpened',' rehypothecated',' broken',' chewed', ' crushed', ' melted', '']
+    const crayonTypes = [' suspicious',' rocket-shaped',' long',' short', ' jumbo sized',' borrowed',' unwrapped',' warm',' freshly sharpened',' rehypothecated',' broken',' chewed', ' crushed', ' melted', '']
     const randomCrayonType = crayonTypes[Math.floor(Math.random() * crayonTypes.length)]
     switch (randomCrayon) {
       case 'a box of':
