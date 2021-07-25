@@ -13,7 +13,7 @@ client.on("message", function (message) {
   const command = args.shift().toLowerCase();
 
   if (command === 'rubbot') {
-    const verbs = ['Ineptly','Incompetently','Weakly','Poorly','Frantically','Disinterestedly', 'Ineffectively', 'Incorrectly', 'Mechanically','Compassionately', 'Camly', 'Gently', 'Nonchalantly', 'Mildly', 'Politely', 'Provacativley']
+    const verbs = ['Ineptly','Incompetently','Weakly','Poorly','Frantically','Disinterestedly', 'Ineffectively', 'Incorrectly', 'Mechanically','Compassionately', 'Calmly', 'Gently', 'Nonchalantly', 'Mildly', 'Politely', 'Provacativley']
     const randomVerb = verbs[Math.floor(Math.random() * verbs.length)]
     const actions = ['juggles', 'pushes','pulls','tenderises','pinches','pokes','punches','rubs', 'strokes', 'massages', 'caresses', 'pats']
     const randomAction = actions[Math.floor(Math.random() * actions.length)]
