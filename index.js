@@ -47,12 +47,26 @@ client.on("message", function (message) {
   if (command === 'crayon') {
     const crayonColors = ["red", "yellow", "blue", "brown", "orange", "green", "violet", "black", "carnation pink", "yellow orange", "blue green", "red violet", "red orange", "yellow green", "blue violet", "white", "violet red", "dandelion", "cerulean", "apricot", "scarlet", "green yellow", "indigo", "gray"]
     const randomCrayonColor = crayonColors[Math.floor(Math.random() * crayonColors.length)]
+    const crayonTypes = ['a single chewed', 'a handful of', 'one', 'the', 'a box of']
+    const randomcrayonType = crayonTypes[Math.floor(Math.random() * crayonTypes.length)]
+    switch (randomcrayonType) {
+      case 'a box of':
+        var crayon = "crayons"
+        break;
+      case 'a handful of':
+        var crayon = "crayons"
+        break;   
+      default:
+        var crayon = "crayon"
+        break;
+    }
+
     if(message.mentions.members.first()){
       var targetUser =  message.mentions.members.first().user
     }else{
       var targetUser = message.channel.guild.members.cache.filter(member => member.presence.status == 'online' && member != message.member && member.roles.cache.some(role => role.name !== 'botsquad' || role.name !== 'Botsquad') || member.displayName != 'GZBOT').random()
     }
-    client.channels.cache.get(message.channel.id).send(`Passes ${targetUser} a ${randomCrayonColor} colored crayon.`);
+    client.channels.cache.get(message.channel.id).send(`Passes ${targetUser} ${randomcrayonType} ${randomCrayonColor} colored ${crayon}.`);
 
   }
 
