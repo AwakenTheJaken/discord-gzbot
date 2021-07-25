@@ -26,5 +26,20 @@ client.on("message", function (message) {
     client.channels.cache.get(message.channel.id).send(`${randomVerb} ${randomAction} ${targetUser}'s ${randomBodyPart}`);
 
   }
+  if (command === 'ama') {
+    const userQuestion = message.content.split('!ama')
+    const questionAskedConfirmation = `${message.member.displayName} asked: ${userQuestion[1]}`
+    if (userQuestion[1].length) {
+      message.reply(`Your question has been received! It will automatically be removed in 30 seconds!`).then(botReply => {
+        message.delete({
+          timeout: 30000
+        })
+        botReply.delete({
+          timeout: 8000 /*time unitl delete in milliseconds*/
+        });
+      })
+      client.channels.cache.find(channel => channel.name === '🎤-ama-questions').send(questionAskedConfirmation);
+    }
+  }
 });
 client.login(process.env.TOKEN)
