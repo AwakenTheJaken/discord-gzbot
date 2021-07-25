@@ -67,7 +67,7 @@ client.on("message", function (message) {
       var targetUser =  message.mentions.members.first().user
     }else{
       var targetUser = message.channel.guild.members.cache.filter(member => member.presence.status !== 'offline' && member.user.id !== message.member.user.id && member.roles.cache.some(role => role.name !== 'botsquad' || role.name !== 'Botsquad') || member.user.username != 'GZBOT').random()
-      console.log(message.channel.guild.members.cache.filter(member => member.presence.status !== 'offline' && member.user.id !== message.member.id && member.roles.cache.some(role => role.name !== 'botsquad' || role.name !== 'Botsquad') || member.name != 'GZBOT'))
+      console.log( message.channel.guild.members.cache.filter(member => member.presence.status !== 'offline' && member.user.id !== message.member.user.id && member.roles.cache.some(role => role.name !== 'botsquad' || role.name !== 'Botsquad') || member.user.username != 'GZBOT'))
     }
     client.channels.cache.get(message.channel.id).send(`Passes ${targetUser} ${randomCrayon} ${randomCrayonColor.toLowerCase()} colored ${crayon}.`);
 
