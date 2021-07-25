@@ -17,7 +17,7 @@ client.on("message", function (message) {
     const randomVerb = verbs[Math.floor(Math.random() * verbs.length)]
     const actions = ['juggles', 'pushes','pulls','tenderises','pinches','pokes','punches','rubs', 'strokes', 'massages', 'caresses', 'pats']
     const randomAction = actions[Math.floor(Math.random() * actions.length)]
-    const bodyParts = ['weenis','calcaneus','sacrum','iliac crest','second metatarsal','humerus','eyes', 'nose', 'funny bone','fingernails', 'femur', 'septum', 'spleen','pancreas', 'elbow', 'big toe']
+    const bodyParts = ['calves','knee','temporal lobe','weenis','calcaneus','sacrum','iliac crest','second metatarsal','humerus','eyes', 'nose', 'funny bone','fingernails', 'femur', 'septum', 'spleen','pancreas', 'elbow', 'big toe']
     const randomBodyPart = bodyParts[Math.floor(Math.random() * bodyParts.length)]
     if(message.mentions.members.first()){
       var targetUser =  message.mentions.members.first().user
