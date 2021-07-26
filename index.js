@@ -34,7 +34,7 @@ client.on("message", function (message) {
     const userQuestion = message.content.split('!8ball')
     console.log(userQuestion)
     console.log(userQuestion)
-    if(userQuestion !== ""){
+    if(userQuestion[1].length){
       client.channels.cache.get(message.channel.id).send(`${randomPrediction}`);
     }else{
       client.channels.cache.get(message.channel.id).send(`Please ask a question!`);
