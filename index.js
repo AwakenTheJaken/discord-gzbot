@@ -32,7 +32,7 @@ client.on("message", function (message) {
     const predictions = ["It is certain", "Without a doubt","You may rely on it","Yes definitely","It is decidedly so","As I see it, yes","Most likely","Yes","Outlook good","Signs point to yes","Reply hazy try again","Better not tell you now","Ask again later","Cannot predict now","Concentrate and ask again","Don’t count on it","Outlook not so good","My sources say no","Very doubtful","My reply is no"]
     const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)]
     const userQuestion = message.content.split('!8ball')
-    if(userQuestion.length){
+    if(userQuestion !== ""){
       client.channels.cache.get(message.channel.id).send(`${randomPrediction}`);
     }else{
       client.channels.cache.get(message.channel.id).send(`Please ask a question!`);
