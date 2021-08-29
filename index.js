@@ -3,18 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 client.on('ready', () => {
     console.info(`Logged in as ${client.user.tag}!`);
-    
-    server = client.guilds.cache.get('856927153295982638');
-    scorp_counter = 0;
-    scorp_messages = ["There is no truth in flesh, only betrayal.\nThere is no strength in flesh, only weakness.\nThere is no constancy in flesh, only decay.\nThere is no certainty in flesh but death.", "Error 220009: unit will not fit thru 25\" hatch.", "I do not want to be human. I want to be myself. I have wonders in my house of sugar. I have parts of myself I do not yet understand. I am not a Good Robot.", "You will turn yourself inside out. Your sadness will know no bounds. Ladybugs will flee you, wolves run wild in you. You will hear the wind chimes like shattering. The sun will drip ichor. Whatever peace you find will be taken from you. Nothing will be the same. Nothing has ever been the same.", "Open error during physical insertion phase", "Look at you: a pathetic creature of meat and bone. How can you challenge a perfect, immortal machine?", "Sometimes it is easy to forget which things in the world can feel pain and which cannot.", "Amputating the head is an option.", "We have nothing to speak about. There never was. Words are an unnecessary trouble. Expression is time wasting away. Any communication is just a yelp in the darkness. I am speaking now but I am saying nothing. I am just making noises, and, as it happens, they are organized in words and you should not draw meaning from this."]
-    assimilationChannelID = '877625671764025394'
-    mod_role = server.roles.cache.find(role => role.name === "🔨 Mod");
-    verified_role = server.roles.cache.find(role => role.name === "Verified");
-    access_denied_role = server.roles.cache.find(role => role.name === "ACCESS DENIED");
-    access_granted_role = server.roles.cache.find(role => role.name === "ACCESS GRANTED");
-    scorp_id = '264158198557048832'
   });
-let scorp_timeout
 const prefix = `!`;
 
 client.on("message", function (message) {
@@ -22,27 +11,13 @@ client.on("message", function (message) {
     const args = commandBody.split(" ");
     const command = args.shift().toLowerCase();
     if (message.author.bot) return;
-
-    if(!message.member.roles.cache.find(r => r.name === "ACCESS GRANTED") && command !== 'assimilateme' && message.channel.id === assimilationChannelID && message.author.id === scorp_id){
-      handleScorpMessage(message, message.channel)   
-    }
-
-    if(!message.member.roles.cache.find(r => r.name === "ACCESS GRANTED") && command === 'assimilateme' && message.channel.id === assimilationChannelID && message.author.id === scorp_id){
-      message.member.roles.add(mod_role).catch(err => console.error(err));
-      message.member.roles.add(verified_role).catch(err => console.error(err));
-      message.member.roles.add(access_granted_role).catch(err => console.error(err));
-      message.member.roles.remove(access_denied_role).catch(err => console.error(err));
-      clearTimeout(scorp_timeout)
-    }
-
-
     if (!message.content.startsWith(prefix)) return;
 
 
+    if(command === 'beer') {
+      client.channels.cache.get(message.channel.id).send(`​🍺ノ( ゜-゜ノ)`);
+    }
 
-
-
-  
     if (command === 'rubbot') {
       const verbs = ['Ineptly','Incompetently','Weakly','Poorly','Frantically','Disinterestedly', 'Ineffectively', 'Incorrectly', 'Mechanically','Compassionately', 'Calmly', 'Gently', 'Nonchalantly', 'Mildly', 'Politely', 'Provocatively']
       const randomVerb = verbs[Math.floor(Math.random() * verbs.length)]
@@ -115,65 +90,5 @@ client.on("message", function (message) {
   
     }
 
-});
-
-function handleScorpMessage(message, channel){
-  if(message){
-    clearInterval(scorp_timeout)
-    if(scorp_counter <= 8){
-
-    message.channel.send(scorp_messages[scorp_counter], {
-      tts: false
-      })
-      scorp_counter++;
-    }else{
-      scorpAssimilate(message.channel)
-    }
-  }
-  resumeScorpAssimilation(channel)
-
-}
-
-function scorpAssimilate(channel){
-  channel.send( 'transcend your puny flesh and type !assimilateme', {
-    tts: true
-    })
-}
-
-function resumeScorpAssimilation(channel){
-  scorp_timeout = setInterval(function(){
-    if(scorp_counter <= 8){
-    channel.send(scorp_messages[scorp_counter], {
-      tts: false
-      })
-      scorp_counter++;
-    }else{
-      scorpAssimilate(channel)
-    }
-  }, 20000)
-}
-
-
-
-
-client.on('presenceUpdate', (oldPresence, newPresence) => {
-  let member = newPresence.member
-
-  if (member.id === scorp_id && !member.roles.cache.find(r => r.name === "ACCESS GRANTED")) {
-    if (oldPresence.status !== newPresence.status) {
-        let channel = member.guild.channels.cache.get(assimilationChannelID);
-        if (newPresence.status === "online") {
-          member.roles.remove(mod_role).catch(err => console.error(err));
-          member.roles.remove(verified_role).catch(err => console.error(err));
-          member.roles.add(access_denied_role).catch(err => console.error(err));
-          setTimeout(function(){
-            channel.send("The Gazebo is dead, insect. Are you afraid? What is it you fear? The end of your trivial existence? When the history of my glory is written, your species shall only be a footnote to my magnificence.", {
-              tts: true
-            })
-          }, 200)
-          handleScorpMessage(null, channel)   
-        }
-    }
-  }
 });
 client.login(process.env.TOKEN)
